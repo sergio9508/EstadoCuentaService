@@ -32,7 +32,7 @@ namespace EstadoCuentaService.Infraestructure.Command
 
         public async Task<bool> GuardarPago(Pagos pago)
         {
-            var query = "exec GuardarPago @Monto, @NumeroTarjeta, @Descripcion, @Fecha";
+            var query = "exec GuardarPago @Monto, @NumeroTarjeta, @Fecha";
             var connection = _dbContext.GetConnectionSqlServer();
             var result = await connection.ExecuteAsync(query, new { pago.Monto, pago.NumeroTarjeta, pago.Fecha });
             return result > 0;

@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\InfoTarjeta\Query\" />
-    <Folder Include="Features\Transacciones\Command\" />
     <Folder Include="Interfaces\Tarjeta\Command\" />
-    <Folder Include="Mapping\" />
-    <Folder Include="UseCase\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -32,4 +32,4 @@ namespace EstadoCuentaService.Infraestructure.DbContext
 
     }
 }
-}
+

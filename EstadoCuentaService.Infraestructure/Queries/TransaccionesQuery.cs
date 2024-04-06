@@ -24,7 +24,7 @@ namespace EstadoCuentaService.Infraestructure.Queries
         }
         public async Task<List<Transaccion>> ObtenerTransacciones(string numeroTarjeta, int Mes)
         {
-            var query = "exec ObtenerTransacciones @mumeroTarjeta, @Mes";
+            var query = "exec ObtenerTransacciones @numeroTarjeta, @Mes";
             var connection = _dbContext.GetConnectionSqlServer();
             var result = await connection.QueryAsync<Transaccion>(query, new { numeroTarjeta, Mes  });
             return result.ToList();

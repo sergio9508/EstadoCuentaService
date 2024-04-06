@@ -32,7 +32,7 @@ namespace EstadoCuentaService.Infraestructure.Queries
 
         public async Task<InformacionTarjeta> ObtenrtInfomacionTarjeta(string NumeroTarjeta)
         {
-            var query = "select NumeroTarjeta, Nombre, SaldoActual, Limite, SaldoDisponible from DatosTarjeta where NumeroTarjeta = @NumeroTarjeta";
+            var query = "exec ObtenerInformacionTarjeta @NumeroTarjeta";
             var connection = _dbContext.GetConnectionSqlServer();
             var result = await connection.QueryFirstOrDefaultAsync<InformacionTarjeta>(query, new { NumeroTarjeta });
             return result;

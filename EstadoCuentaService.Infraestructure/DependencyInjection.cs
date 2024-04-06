@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EstadoCuentaService.Application.Interfaces.Tarjeta.Query;
+using EstadoCuentaService.Application.Interfaces.Transacciones.Command;
+using EstadoCuentaService.Application.Interfaces.Transacciones.Query;
+using EstadoCuentaService.Infraestructure.Command;
+using EstadoCuentaService.Infraestructure.Queries;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -13,6 +18,10 @@ namespace EstadoCuentaService.Infraestructure
         public static void AddInfraestructure(this IServiceCollection services)
         {
             services.AddSingleton(Log.Logger);
+            services.AddTransient<ITarjetaQuery, TarjetaQuery>();
+            services.AddTransient<ITransaccionesCommand, TransaccionesCommand>();
+            services.AddTransient<ITransaccionesQuery, TransaccionesQuery>();
+
         }
     }
 }

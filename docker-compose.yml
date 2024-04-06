@@ -3,29 +3,22 @@ version: '3.9'
 networks:
   default:
     driver: bridge
-
-volumes:
-  sql-server-data:
-    driver: local
-  sqldata:
-  sqllog:
-  sqlbackup:
-
 services:
+  # SQL Server service
   db:
-    image: mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+    # Docker Image for MSSQL
+    image: mcr.microsoft.com/mssql/server
     container_name: db-sqlserver
     networks:
       - default
-    restart: always
-    env_file:
-      - sqlserver.env
-      - sapassword.env
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your@Password
     ports:
-      - '1433:1433'
+      - "1433:1433"
     volumes:
-      - sql-server-data:/var/opt/mssql/
-      - sqldata:/var/opt/sqlserver/data
-      - sqllog:/var/opt/sqlserver/log
-      - sqlbackup:/var/opt/sqlserver/backup
-      - /c/docker/shared:/usr/shared
+      - sql_data:/var/opt/mssql
+volumes:
+  # SQL Server data volume
+  sql_data:
+    # Define the volume to persist SQL Server data

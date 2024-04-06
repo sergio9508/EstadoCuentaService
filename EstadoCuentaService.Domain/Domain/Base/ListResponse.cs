@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstadoCuentaService.Domain.Domain.Base
 {
-    internal class ListResponse<T>
+    public class ListResponse<T>
     {
         public int code { get; set; }
         public string message { get; set; }

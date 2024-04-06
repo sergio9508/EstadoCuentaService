@@ -1,0 +1,41 @@
+.compra {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  form {
+    background: #d1cfcf;
+    padding: 2em;
+    border-radius: 10px;
+    .form-control {
+      display: flex;
+      flex-direction: column;
+      input {
+        background: white;
+        border: 1px solid black;
+        font-size: 24px;
+        border-radius: 10px;
+      }
+      button {
+        height: 24px;
+        background-color: #141736;
+        color: white;
+        margin-top: 1em;
+        width: auto;
+        height: 32px;
+        border-radius: 10px;
+      }
+      a {
+        text-align: center;
+        height: 24px;
+        background-color: #141736;
+        color: white;
+        margin-top: 1em;
+        width: auto;
+        height: 32px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

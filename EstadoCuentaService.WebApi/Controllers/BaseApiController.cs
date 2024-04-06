@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EstadoCuentaService.WebApi.Controllers
 {
     [ApiController]
+    [EnableCors("AllowCors")]
     [Route("api/v1/[controller]")]
     public class BaseApiController : ControllerBase
     {

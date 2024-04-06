@@ -2,6 +2,7 @@ using EstadoCuentaService.Application;
 using EstadoCuentaService.Infraestructure;
 using EstadoCuentaService.WebApi.Middleware;
 using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 using Serilog.Events;
@@ -25,6 +26,20 @@ builder.Services.AddHealthChecks().AddSqlServer(builder.Configuration.GetConnect
 builder.Services.AddApplication();
 builder.Services.AddInfraestructure();
 
+builder.Services.AddCors(
+    options =>
+    {
+        options.AddPolicy("AllowCors",
+        builder =>
+        {
+            builder.AllowAnyOrigin().WithMethods(
+                       HttpMethod.Get.Method,
+                       HttpMethod.Put.Method,
+                       HttpMethod.Post.Method,
+                       HttpMethod.Delete.Method).AllowAnyHeader();
+        });
+    }
+    );
 
 #region Serilog
 builder.Host.UseSerilog(
@@ -52,8 +67,9 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseRouting();
+app.UseCors("AllowCors");
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

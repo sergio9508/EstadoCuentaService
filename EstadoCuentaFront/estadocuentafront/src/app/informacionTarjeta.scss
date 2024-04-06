@@ -1,0 +1,42 @@
+@import url("material-icons/iconfont/material-icons.css");
+
+.informacion-tarjeta {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0px 0px 29px 5px rgba(177, 179, 184, 0.63);
+  align-items: center;
+  justify-content: space-around;
+  .icono {
+    span {
+      color: #123652;
+      font-size: 64px;
+    }
+  }
+  .content {
+    span {
+      font-weight: bold;
+    }
+  }
+}
+.botones {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  .btn-pago {
+    width: 200px;
+    text-align: center;
+    background-color: #3d93e3;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .btn-compra {
+    width: 200px;
+    text-align: center;
+    background-color: #61c77d;
+    height: 40px;
+    border-radius: 10px;
+  }
+}

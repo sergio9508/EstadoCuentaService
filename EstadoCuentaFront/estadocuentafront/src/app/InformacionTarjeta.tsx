@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { getInfoTarjeta } from "./data/data";
+import { getEstadoCuentaPDF, getInfoTarjeta } from "./data/data";
 import "./informacionTarjeta.scss";
-import path from "path";
+import EstadoCuenta from "./EstadoCuenta";
+import EstadoCuentaPDF from "./estadoCuentaPDF";
 
 export default async function InformacionTarjeta() {
   const infoTarjeta = await getInfoTarjeta("1234567891234");
+
   return (
     <div className="m-4">
       <div className="columns-2">
@@ -49,6 +51,7 @@ export default async function InformacionTarjeta() {
           >
             Agregar Compra
           </Link>
+          <EstadoCuentaPDF />
         </div>
       </div>
     </div>

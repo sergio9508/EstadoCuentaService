@@ -15,6 +15,13 @@ export async function getEstadoCuenta(numeroTarjeta: string): Promise<ListRespon
   return json;
 }
 
+export async function getEstadoCuentaPDF(numeroTarjeta: string): Promise<ObjectResponse<string>> {
+  const mes = new Date().getMonth();
+  const res = await fetch(`http://localhost:5095/api/v1/transacciones/getestadocuenta?NumeroTarjeta=${numeroTarjeta}&Mes=${mes + 1}`, { cache: 'no-cache' });
+  const json = await res.json();
+  return json;
+}
+
 
 export async function guardarPago(pago: Pago): Promise<GenericResponse> {
   const body = JSON.stringify(pago);

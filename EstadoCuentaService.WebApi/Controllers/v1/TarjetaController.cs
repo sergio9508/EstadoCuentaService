@@ -20,7 +20,7 @@ namespace EstadoCuentaService.WebApi.Controllers.v1
         [HttpGet("GetInfoTarjeta")]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GenericResponse))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(GenericResponse))]
-        [ProducesResponseType(typeof(ListResponse<Transaccion>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ObjectResponse<InformacionTarjeta>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetInfoTarjeta([FromQuery] ObtenerInfoTarjetaQuery query)
         {
             try

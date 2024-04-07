@@ -15,6 +15,8 @@ namespace EstadoCuentaService.Application.UseCase.Interfaces
         Task<ListResponse<Transaccion>> ObtenerTransacciones(ObtenerTransaccionesQuery query);
         Task<GenericResponse> GuardarPago(GuardarPagoCommand command);
         Task<GenericResponse> GuardarCompra(GuardarCompraCommand command);
+        Task<ObjectResponse<byte[]>> ObtenerEstadoCuenta(ObtenerEstadoCuentaQuery query);
+        Task<ObjectResponse<byte[]>> ObtenerCompras(string numeroTarjeta);
 
     }
 }

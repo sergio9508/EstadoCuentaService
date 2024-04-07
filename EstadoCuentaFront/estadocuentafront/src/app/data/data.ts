@@ -22,6 +22,11 @@ export async function getEstadoCuentaPDF(numeroTarjeta: string): Promise<ObjectR
   return json;
 }
 
+export async function getCompras(numeroTarjeta: string): Promise<ObjectResponse<string>> {
+  const res = await fetch(`http://localhost:5095/api/v1/transacciones/getcompras?NumeroTarjeta=${numeroTarjeta}`, { cache: 'no-cache' });
+  const json = await res.json();
+  return json;
+}
 
 export async function guardarPago(pago: Pago): Promise<GenericResponse> {
   const body = JSON.stringify(pago);

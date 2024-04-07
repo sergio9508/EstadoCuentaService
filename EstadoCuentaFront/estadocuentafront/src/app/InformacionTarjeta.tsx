@@ -3,6 +3,7 @@ import { getEstadoCuentaPDF, getInfoTarjeta } from "./data/data";
 import "./informacionTarjeta.scss";
 import EstadoCuenta from "./EstadoCuenta";
 import EstadoCuentaPDF from "./estadoCuentaPDF";
+import Compras from "./compras";
 
 export default async function InformacionTarjeta() {
   const infoTarjeta = await getInfoTarjeta("1234567891234");
@@ -52,6 +53,7 @@ export default async function InformacionTarjeta() {
             Agregar Compra
           </Link>
           <EstadoCuentaPDF />
+          <Compras />
         </div>
       </div>
     </div>

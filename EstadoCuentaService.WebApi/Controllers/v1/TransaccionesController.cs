@@ -36,6 +36,46 @@ namespace EstadoCuentaService.WebApi.Controllers.v1
             }
         }
 
+        [HttpGet("GetEstadoCuenta")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GenericResponse))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(GenericResponse))]
+        [ProducesResponseType(typeof(ObjectResponse<byte[]>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetEstadoCuenta([FromQuery] ObtenerEstadoCuentaQuery query)
+        {
+            try
+            {
+                _log.LogInformation(JsonSerializer.Serialize(query));
+                return Ok(await Mediator.Send(query));
+            }
+
+            catch (Exception ex)
+            {
+                string message = string.Format("Ocurrio un error: {0}", ex.Message);
+                _log.LogError(message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new GenericResponse { code = 0, message = message });
+            }
+        }
+
+        [HttpGet("GetCompras")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GenericResponse))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(GenericResponse))]
+        [ProducesResponseType(typeof(ObjectResponse<byte[]>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetCompras([FromQuery] ObtenerComporasExcelQuery query)
+        {
+            try
+            {
+                _log.LogInformation(JsonSerializer.Serialize(query));
+                return Ok(await Mediator.Send(query));
+            }
+
+            catch (Exception ex)
+            {
+                string message = string.Format("Ocurrio un error: {0}", ex.Message);
+                _log.LogError(message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new GenericResponse { code = 0, message = message });
+            }
+        }
+
         [HttpPost("GuardarPago")]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GenericResponse))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(GenericResponse))]

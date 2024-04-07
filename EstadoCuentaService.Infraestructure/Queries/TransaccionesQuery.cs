@@ -30,6 +30,13 @@ namespace EstadoCuentaService.Infraestructure.Queries
             return result.ToList();
         }
 
+        public async Task<List<Compras>> ObtenerCompras(string numeroTarjeta)
+        {
+            var query = "select * from Compras where NumeroTarjeta = @NumeroTarjeta";
+            var connection = _dbContext.GetConnectionSqlServer();
+            var result = await connection.QueryAsync<Compras>(query, new { numeroTarjeta });
+            return result.ToList();
+        }
        
     }
 }
